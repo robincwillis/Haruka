@@ -1,0 +1,86 @@
+<div class="row">
+<p id="notice"><%= notice %></p>
+
+<div class="span6">
+<h1><%= @term.name %></h1>
+
+<% if @term.kanji? %>
+  <h3><b><%= @term.kanji %></b></h3>
+<% end %>
+
+<% if @term.kana? %>
+  <h3><b><%= @term.kana %></b></h3>
+<% end %>
+
+<p><b>Phonetic: </b><%= @term.phonetic %></p>
+<p><b>Definition: </b><%= @term.def %></p>
+<p><b>Literal: </b><%= @term.lit %></p>
+<p><b>Description: </b><%= @term.desc %></p>
+
+<%= link_to 'Edit', edit_term_path(@term), class: "btn btn-primary" %> 
+<%= link_to 'Destroy', @term, method: :delete, data: { confirm: 'Are you sure?'}, class:"btn btn-danger"  %> 
+
+<%= link_to 'Back', terms_path, class: "btn" %>
+
+
+<h2>See Also</h2>
+
+<ul>
+<% for varient in @term.varients %>
+<li>
+  <%= varient.term_varient.name %> | 
+  <%= varient.term_varient.kanji %> | 
+ <%= link_to "remove", varient, :method => :delete %>
+</li>
+<% end %>
+</ul>
+<hr>
+
+<% for term in @term.inverse_term_varients %>
+<ul>  
+<li>
+  <%= term.name %> | 
+  <%= term.kanji %> | 
+</li>
+<% end %>
+
+</ul>
+
+</div>
+<div class="span5 offset1">
+<div class="row">
+<h2>Add a Comment:</h2>
+<%= form_for([@term, @term.comments.build]) do |f| %>
+ <div class="field">
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Comment", class: "btn" %>
+  </div>
+<% end %>
+</div>
+<div class="row">
+<h2>Comments</h2>
+  <% @term.comments.each do |comment| %>
+    <p>
+      <b>Date:</b>
+      <%= comment.created_at %>
+    </p>
+    <p>
+      <b>Author:</b>
+      <%= comment.author %>
+    </p>
+   
+    <p>
+      <b>Comment:</b>
+      <%= comment.body %>
+    </p>
+  <% end %>
+</div>
+</div>
+</div>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  kanji: MyString
+  kana: MyString
+  def: MyString
+  lit: MyString
+  desc: MyString
+
+two:
+  name: MyString
+  kanji: MyString
+  kana: MyString
+  def: MyString
+  lit: MyString
+  desc: MyString

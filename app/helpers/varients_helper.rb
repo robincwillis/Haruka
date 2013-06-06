@@ -1,0 +1,2 @@
+module VarientsHelper
+end

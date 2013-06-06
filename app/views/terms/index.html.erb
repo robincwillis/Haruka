@@ -1,0 +1,24 @@
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Kanji</th>
+    <th>Kana</th>
+    <th>Phonetic</th>
+    <th>Definition</th>
+  </tr>
+
+<% @terms.each do |term| %>
+  <tr>
+    <td><%= link_to term.name, term %></td>  
+    <td><%= term.kanji %></td>
+    <td><%= term.kana %></td>
+    <td><%= term.phonetic %></td>
+    <td><%= term.def %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Term', new_term_path, class: "btn btn-primary" %>

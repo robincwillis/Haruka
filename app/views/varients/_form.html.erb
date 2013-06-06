@@ -1,0 +1,25 @@
+<%= form_for(@varient) do |f| %>
+  <% if @varient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@varient.errors.count, "error") %> prohibited this varient from being saved:</h2>
+
+      <ul>
+      <% @varient.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :term_a_id %><br />
+    <%= f.number_field :term_a_id %>
+  </div>
+  <div class="field">
+    <%= f.label :term_b_id %><br />
+    <%= f.number_field :term_b_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

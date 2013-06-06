@@ -1,0 +1,89 @@
+<%= form_for(@term,:html => {:class => "form-horizontal"}) do |f| %>
+  <% if @term.errors.any? %>
+    <div id="error_explanation">
+      
+      <div class="alert alert-error">
+       <h2><%= pluralize(@term.errors.count, "error") %></h2>
+      </div>
+
+      <ul>
+      <% @term.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="control-group">
+      <%= f.label :name, :class=>'control-label' %>
+    <div class="field controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :kanji, :class=>'control-label'  %>
+    <div class="field controls">
+      <%= f.text_field :kanji %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :kana, :class=>'control-label' %>
+  <div class="field controls">
+    
+    <%= f.text_field :kana %>
+  </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :phonetic, :class=>'control-label' %>
+  <div class="field controls">
+    
+    <%= f.text_field :phonetic %>
+  </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :def, :class=>'control-label' %>
+  <div class="field controls">
+    
+    <%= f.text_field :def %>
+  </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :lit, :class=>'control-label' %>
+  <div class="field controls">
+    
+    <%= f.text_field :lit %>
+  </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :desc, :class=>'control-label' %>
+  <div class="field controls">
+    
+    <%= f.text_area :desc %>
+  </div>
+</div>
+  <div class="control-group">
+    <div class="actions controls">
+      <%= f.submit :class=>'btn btn-primary'  %>
+    </div>
+  </div>
+
+<!-- VARIENTS WIP -->
+<ul>
+<% @terms.each do |term| %>
+  <% if @term != term %>
+
+<li>
+  <%= link_to 'Add as Varient', varients_path(:term_id => @term, :term_varient_id => term), :method => :post %>
+  <b><%= term.name %></b>
+  <%= term.kanji %>
+  
+</li>
+<% end %>
+
+<% end %>
+</ul>
+
+<% end %>
