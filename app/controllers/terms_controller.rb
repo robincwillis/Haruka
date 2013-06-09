@@ -2,7 +2,7 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    @terms = Term.all
+    @terms = Term.all.group_by{|u| u.name[0]}
 
     respond_to do |format|
       format.html # index.html.erb
