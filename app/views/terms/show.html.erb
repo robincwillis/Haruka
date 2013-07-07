@@ -1,36 +1,61 @@
-<div class="row">
+<div class="row-fluid">
   <div class="span12">
-  <%= link_to 'Edit', edit_term_path(@term), class: "btn btn-primary" %> 
-  <%= link_to 'Destroy', @term, method: :delete, data: { confirm: 'Are you sure?'}, class:"btn btn-danger"  %> 
-  <%= link_to 'Back', terms_path, class: "btn" %>
+  <%= link_to '<i class="icon-chevron-left icon-white"></i> Back'.html_safe, terms_path, class: "btn btn-inverse" %>
   </div>
 </div>
-<div class="row">
 <p id="notice"><%= notice %></p>
+<div class="row-fluid">
+
 
 <div class="span6">
 
-<%= image_tag @term.photo.url(:thumb) %>
 
-<h1><%= @term.name %></h1>
+<%= link_to_if(@term.photo?, image_tag(@term.photo.url(:thumb)), @term.photo.url) if @term.photo? %>
+<%# if @term.photo? %>
+<%# image_tag @term.photo.url(:thumb) %>
+<%# end %>
+
+<h2><%= @term.name %></h2>
 
 <% if @term.kanji? %>
-  <h3><b><%= @term.kanji %></b></h3>
+  <h1><%= @term.kanji %></h1>
 <% end %>
 
 <% if @term.kana? %>
-  <h3><b><%= @term.kana %></b></h3>
+  <h1><%= @term.kana %></h1>
 <% end %>
 
-<p><b>Phonetic: </b><%= @term.phonetic %></p>
-<p><b>Definition: </b><%= @term.def %></p>
-<p><b>Literal: </b><%= @term.lit %></p>
-<p><b>Description: </b><%= @term.desc %></p>
+<% if @term.phonetic? %>
+<p><b class="light">Phonetic: </b><%= @term.phonetic %></p>
+<% end %>
+<% if @term.def? %>
+<p><b class="light">Definition: </b><%= @term.def %></p>
+<% end %>
+<% if @term.lit? %>
+<p><b class="light">Literal: </b><%= @term.lit %></p>
+<% end %>
+<% if @term.desc? %>
+<p><b class="light">Description: </b><%= @term.desc %></p>
+<% end %>
 
+<div class="well center">
+
+  <div class="btn-group">
+  <%= link_to '<i class="icon-arrow-down"></i>'.html_safe,nil, id: 'vote-down', title:'Vote Down', class: 'btn btn-small' %> 
+  <%= link_to '------------'.html_safe,nil, id: 'accuracy', title:'97% Accurate', class: 'btn btn-small' %>
+  <%= link_to '<i class="icon-arrow-up"></i>'.html_safe,nil, id: 'vote-up', title:'Vote Up', class: 'btn btn-small' %>
+  </div>
+   <%= link_to '<i class="icon-heart"></i>'.html_safe,nil, id: 'save', title:'Save To Favorites', class: 'btn btn-small' %>
+  <%= link_to '<i class="icon-flag"></i>'.html_safe,nil, id: 'flag', title:'Call Bullshit', class: 'btn btn-small' %>
+  <%= link_to '<i class="icon-cog icon-white"></i>'.html_safe, edit_term_path(@term), id: 'edit', title:'Edit', class: "btn btn-small btn-pink" %> 
+  <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, @term, method: :delete, id: 'delete', title:'Delete', data: { confirm: 'Are you sure?'}, class: "btn btn-small btn-danger" %> 
+ </div>
 
 
 
 <h2>See Also</h2>
+<% if @term.varients.any? %>
+
 
 <ul>
 <% for varient in @term.varients %>
@@ -52,26 +77,14 @@
 <% end %>
 
 </ul>
+<% end %>
+
+<h2>Phrases</h2>
 
 </div>
-<div class="span5 offset1">
-<div class="row">
-<h2>Add a Comment:</h2>
-<%= form_for([@term, @term.comments.build]) do |f| %>
- <div class="field">
-    <%= f.label :author %>
-    <%= f.text_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Add Comment", class: "btn" %>
-  </div>
-<% end %>
-</div>
-<div class="row">
+<div class="span6">
+  
+  <% if @term.comments.any? %>
 <h2>Comments</h2>
   <% @term.comments.each do |comment| %>
     <p>
@@ -88,6 +101,27 @@
       <%= comment.body %>
     </p>
   <% end %>
-</div>
+  <% end %>
+
+
+<h2>Add a Comment:</h2>
+<%= form_for([@term, @term.comments.build]) do |f| %>
+ <div class="field">
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= button_tag(type: 'submit', class: "btn") do %>
+    <i class="icon-comment"></i> Add Comment
+    <% end %>
+  </div>
+<% end %>
+
+<h2>Add a Phrase</h2>
+
 </div>
 </div>

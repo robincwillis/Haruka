@@ -16,7 +16,14 @@ a:hover,a:focus{
   color:red;
 }
 
+.light{
+  color:#b2b2b2;
+}
 
+.mini{
+  font-size:9px;
+  line-height: 15px;
+}
 
 @media (min-width: 979px) {
 	.navbar-fixed-top, .navbar-fixed-bottom {
@@ -93,8 +100,8 @@ color:#000;
 }
 
 .navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner{
-  background:#f7f7f7;
-  background-color:rgb(247,247,247);
+  background:#ededed;
+  background-color:rgb(237,237,237);
   border-bottom: 1px solid #d2d2d2;
   -moz-box-shadow: 0 4px 2px -2px #fff;
   -webkit-box-shadow: 0 4px 2px -2px #fff;
@@ -129,7 +136,7 @@ color:#000;
 }
 
 .btn-pink {
-background-color: hsl(346, 100%, 79%) !important;
+  background-color: hsl(346, 100%, 79%) !important;
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffa8bc", endColorstr="#ff93ac");
   background-image: -khtml-gradient(linear, left top, left bottom, from(#ffa8bc), to(#ff93ac));
@@ -150,5 +157,5 @@ background-color: hsl(346, 100%, 79%) !important;
 
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
-border-radius:3px;
+  border-radius:3px;
 }

@@ -4,6 +4,14 @@
 
 $(document).ready(function() {
 
+  $('#vote-up').tooltip();
+  $('#vote-down').tooltip();
+  $('#accuracy').tooltip();
+  $('#flag').tooltip();
+  $('#save').tooltip();
+  $('#edit').tooltip();
+  $('#delete').tooltip();
+
 	var items = [];
 	var map = {};
 	var objects = [];
