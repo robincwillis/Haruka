@@ -4,8 +4,7 @@ Dictionary::Application.routes.draw do
 
 
   resources :terms do
-    resources :comments
-    
+    resources :comments 
   end
 
   get "links/index"

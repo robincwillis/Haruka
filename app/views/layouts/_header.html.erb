@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <%= link_to "Ero Dict", root_path, class: "brand" %>
+          <%= link_to "Haruka", root_path, class: "brand" %>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><%= link_to "About", "#" %></li>
@@ -14,6 +14,7 @@
               <li><%= link_to "News", "#" %></li>
               <li><%= link_to "Dictionary", terms_path %></li>
             </ul>
+            <%= render partial: 'shared/search' %>
           </div><!--/.nav-collapse -->
         </div>
       </div>

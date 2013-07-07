@@ -34,4 +34,8 @@ Dictionary::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #paperclip link to imagemagick
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+  
 end

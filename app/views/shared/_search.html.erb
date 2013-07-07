@@ -1,0 +1,8 @@
+
+<%= form_tag terms_path, :method => 'get', :class => "navbar-form pull-right" do %>
+
+<%= text_field_tag :search, params[:search], :class => "span3" %>
+<%= submit_tag "Search", :class => "btn", :name =>nil %>
+
+<% end %>
+

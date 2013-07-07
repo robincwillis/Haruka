@@ -2,14 +2,14 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    @terms = Term.all.group_by{|u| u.name[0]}
-
+    @terms = Term.all
+    #temp for now, should replace with http://pat.github.io/thinking-sphinx/
+    @terms = Term.search(params[:search]).group_by{|u| u.name[0]}
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @terms }
     end
-  end
-
+end
   # GET /terms/1
   # GET /terms/1.json
   def show
@@ -43,6 +43,7 @@ class TermsController < ApplicationController
   # POST /terms
   # POST /terms.json
   def create
+    @terms = Term.all
     @term = Term.new(params[:term])
 
     respond_to do |format|
@@ -59,6 +60,7 @@ class TermsController < ApplicationController
   # PUT /terms/1
   # PUT /terms/1.json
   def update
+    @terms = Term.all
     @term = Term.find(params[:id])
 
     respond_to do |format|
