@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  english: MyText
+  japanese: MyText
+  term_id: 
+
+two:
+  english: MyText
+  japanese: MyText
+  term_id: 

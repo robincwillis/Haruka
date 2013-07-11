@@ -1,8 +1,4 @@
-<div class="row-fluid">
-  <div class="span12">
-  <%= link_to '<i class="icon-chevron-left icon-white"></i> Back'.html_safe, terms_path, class: "btn btn-inverse" %>
-  </div>
-</div>
+<%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 <div class="row-fluid">
 
@@ -15,7 +11,6 @@
 <%# image_tag @term.photo.url(:thumb) %>
 <%# end %>
 
-<h2><%= @term.name %></h2>
 
 <% if @term.kanji? %>
   <h1><%= @term.kanji %></h1>
@@ -24,6 +19,8 @@
 <% if @term.kana? %>
   <h1><%= @term.kana %></h1>
 <% end %>
+
+<h2><%= @term.name %></h2>
 
 <% if @term.phonetic? %>
 <p><b class="light">Phonetic: </b><%= @term.phonetic %></p>
@@ -47,37 +44,16 @@
   </div>
    <%= link_to '<i class="icon-heart"></i>'.html_safe,nil, id: 'save', title:'Save To Favorites', class: 'btn btn-small' %>
   <%= link_to '<i class="icon-flag"></i>'.html_safe,nil, id: 'flag', title:'Call Bullshit', class: 'btn btn-small' %>
+  <% if signed_in? %>
   <%= link_to '<i class="icon-cog icon-white"></i>'.html_safe, edit_term_path(@term), id: 'edit', title:'Edit', class: "btn btn-small btn-pink" %> 
-  <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, @term, method: :delete, id: 'delete', title:'Delete', data: { confirm: 'Are you sure?'}, class: "btn btn-small btn-danger" %> 
+  <% end %>
+  <% if signed_in? && current_user.admin? %>
+  <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, @term, method: :delete, id: 'delete', title:'Delete', data: { confirm: 'Are you sure?'}, class: "btn btn-small btn-danger" %><% end %> 
  </div>
 
-
-
 <h2>See Also</h2>
-<% if @term.varients.any? %>
-
-
-<ul>
-<% for varient in @term.varients %>
-<li>
-  <%= varient.term_varient.name %> | 
-  <%= varient.term_varient.kanji %> | 
- <%= link_to "remove", varient, :method => :delete %>
-</li>
-<% end %>
-</ul>
+<%= render 'varients/list' %>
 <hr>
-
-<% for term in @term.inverse_term_varients %>
-<ul>  
-<li>
-  <%= term.name %> | 
-  <%= term.kanji %> | 
-</li>
-<% end %>
-
-</ul>
-<% end %>
 
 <h2>Phrases</h2>
 
@@ -88,31 +64,23 @@
 <h2>Comments</h2>
   <% @term.comments.each do |comment| %>
     <p>
-      <b>Date:</b>
-      <%= comment.created_at %>
-    </p>
-    <p>
-      <b>Author:</b>
-      <%= comment.author %>
-    </p>
-   
-    <p>
-      <b>Comment:</b>
+      <%= comment.author %> 
+      <span class="light">
+      <%= comment.created_at.strftime("%m/%d/%Y") %>
+      </span>
+    </p>   
+    <p class="well">
       <%= comment.body %>
     </p>
   <% end %>
   <% end %>
 
-
+<% if signed_in? %>
 <h2>Add a Comment:</h2>
 <%= form_for([@term, @term.comments.build]) do |f| %>
- <div class="field">
-    <%= f.label :author %>
-    <%= f.text_field :author %>
-  </div>
   <div class="field">
     <%= f.label :body %>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, class: "input-block-level" %>
   </div>
   <div class="actions">
     <%= button_tag(type: 'submit', class: "btn") do %>
@@ -120,8 +88,9 @@
     <% end %>
   </div>
 <% end %>
+<% end %>
 
 <h2>Add a Phrase</h2>
-
+  <%= render 'phrases/form' %>
 </div>
 </div>

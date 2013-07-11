@@ -10,7 +10,8 @@ Dictionary::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
   resources :terms do
-    resources :comments 
+    resources :comments
+    resources :phrases
   end
 
   resources :varients

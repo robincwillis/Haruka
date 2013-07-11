@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130707033316) do
+ActiveRecord::Schema.define(:version => 20130711013945) do
 
   create_table "comments", :force => true do |t|
     t.string   "author"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(:version => 20130707033316) do
     t.integer "right_term_id"
   end
 
+  create_table "phrases", :force => true do |t|
+    t.text     "english"
+    t.text     "japanese"
+    t.integer  "user_id"
+    t.integer  "term_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "terms", :force => true do |t|
     t.string   "name"
     t.string   "kanji"
@@ -42,15 +51,19 @@ ActiveRecord::Schema.define(:version => 20130707033316) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "terms", ["user_id"], :name => "index_terms_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "password_digest"
     t.string   "remember_token"
+    t.boolean  "admin",           :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

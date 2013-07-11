@@ -1,4 +1,6 @@
 class TermsController < ApplicationController
+  
+  include SessionsHelper
   # GET /terms
   # GET /terms.json
   def index

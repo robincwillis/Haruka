@@ -19,11 +19,21 @@
 #
 
 class Term < ActiveRecord::Base
+
+  belongs_to :user
+  has_many :phrases
+
   attr_accessible :def, :desc, :kana, :kanji, :lit, :name, :phonetic
 
-  validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 12 }
-  validates :def, presence: true, length: { maximum: 12 }
-  validates :desc, length: { maximum: 200 }
+  VALID_NAME_REGEX = /^[a-zA-Z\d\s]*$/
+  validates :name, presence: true, 
+                    uniqueness: { case_sensitive: false }, 
+                    length: { maximum: 22 },
+                    format: { with: VALID_NAME_REGEX }
+  
+
+  validates :def, presence: true, length: { maximum: 22 }
+  validates :desc, length: { maximum: 500 }
 
   has_many :comments
   has_many :varients

@@ -2,7 +2,9 @@
 
 
 <ul class="inline">
-  <li><%= link_to 'New Term', new_term_path, class: "btn btn-pink" %></li>
+  <% if signed_in? %>
+    <li><p><%= link_to 'New Term', new_term_path, class: "btn btn-pink" %></p></li>
+  <% end %>
   <li><a href="#A">A</a></li>
   <li><a href="#B">B</a></li>
   <li><a href="#C">C</a></li>

@@ -1,0 +1,41 @@
+<% if @term.varients.any? %>
+	<ul id="varients" class="unstyled">
+		<% for varient in @term.varients %>
+			<li>
+				<p>
+	  			<%= link_to varient.term_varient.name, varient.term_varient %>
+	  			<% if varient.term_varient.kanji? %>
+	  				<span class="light"> <%= varient.term_varient.kanji %></span>
+  				<% else %>
+  					<% if varient.term_varient.kana? %> 
+	 					<span class="light"> <%= varient.term_varient.kana %></span>
+	 				<% end %>
+	 			<% end %>
+			 	  <% if signed_in? && current_user.admin? %>
+  <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, varient, method: :delete, id: 'delete', title:'Delete', data: { confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %><% end %> 
+				 </p>
+			</li>
+		<% end %>
+	</ul>
+<% end %>
+
+<% if @term.inverse_term_varients.any? %>
+	<ul class="unstyled">
+		<% for varient in @term.inverse_term_varients %>
+  			<li>
+  				<p>
+	  			<%= link_to varient.name, varient %>
+	  			<% if varient.kanji? %>
+	  				<span class="light"> <%= varient.kanji %></span>
+  				<% else %>
+  					<% if varient.kana? %> 
+	 					<span class="light"> <%= varient.kana %></span>
+	 				<% end %>
+	 			<% end %>
+	 			<% if signed_in? && current_user.admin? %>
+  <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, varient, method: :delete, id: 'delete', title:'Delete', data: { confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %><% end %> 
+  			</p>
+			</li>
+		<% end %>
+	</ul>
+<% end %>

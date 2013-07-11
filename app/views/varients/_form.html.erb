@@ -1,25 +1,20 @@
-<%= form_for(@varient) do |f| %>
-  <% if @varient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@varient.errors.count, "error") %> prohibited this varient from being saved:</h2>
+<!-- TODO : Move these either to ajax get requests in or use gon, decide -->
+<!-- see - http://railscasts.com/episodes/324-passing-data-to-javascript -->
+<%= javascript_tag "var term = #{ @term.to_json };" %>
+<%= javascript_tag "var autocomplete_items = #{ @terms.to_json };" %>
 
-      <ul>
-      <% @varient.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<div class="row-fluid">
+  <div class="span8 offset2">    
+    <div class="control-group span6">
+      <%= form_tag do %>
+        <%= label_tag("auto_complete", "Add Varients") %>
+        <%= text_field_tag "auto_complete", "", class: "input-block-level", autocomplete: "off" %>
       <% end %>
-      </ul>
+    </div>    
+    <div class="control-group span6">
+      <p>Varients</p>
+      <%= render 'varients/list' %>
     </div>
-  <% end %>
+  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :term_a_id %><br />
-    <%= f.number_field :term_a_id %>
-  </div>
-  <div class="field">
-    <%= f.label :term_b_id %><br />
-    <%= f.number_field :term_b_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

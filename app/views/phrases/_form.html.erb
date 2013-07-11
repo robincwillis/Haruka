@@ -1,0 +1,15 @@
+<%= form_for([@term, @term.phrases.build]) do |f| %>
+	<div class="field">
+		<%= f.label :japanese %>
+		<%= f.text_area :japanese, class: "input-block-level", rows: "1" %>		
+	</div>
+	<div class="field">
+		<%= f.label :english %>
+		<%= f.text_area :english, class: "input-block-level", rows: "1" %>
+	</div>
+	<div class="action">
+		<%= button_tag(type: 'submit', class: 'btn') do %>
+		<i class="icon-comment"></i> Add Phrase
+		<% end %>
+	</div>
+<% end %>

@@ -1,3 +1,24 @@
 <% provide(:title, @user.name) %>
 
-<h2><%= @user.name %>, <%= @user.email %></h2>
+<div class="row-fluid">
+	<div class="span4">
+		<h2><%= @user.name %></h2>	
+		<h2><%= @user.terms.count %> Terms</h2>
+	</div>
+	<div class="span8">
+		<% if @user.terms.any? %>
+
+			<table class="table">
+				<tr>
+					<th>Name</th>
+					<th>Kanji</th>
+					<th>Kana</th>
+				</tr>
+				<%= render @terms %>
+			</table>
+		
+
+		<% end %>
+	</div>
+</div>
+
