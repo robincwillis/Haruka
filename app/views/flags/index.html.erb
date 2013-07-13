@@ -1,0 +1,22 @@
+
+<ul>
+<% @terms.each do |term| %>
+	<% if !term.flags.empty? %>
+		<li><%= link_to term.name, term %> [Flags: <%= term.flags.count %> ] 
+			[by: <%=  User.find(term.user_id).name %>]
+			<a href="#" title="">Delete</a></li>
+		<ul class="well">
+			<% term.flags.each do |flag| %>
+			<li>
+			
+					<% if flag.user_id? %>
+					[Flagged By: <%= User.find(flag.user_id).name %>]
+					<% end %>
+					<%= flag.reason %> 
+				<a href="#" title="">Delete</a></li>
+			<% end %>
+		</ul>
+		
+	<% end %>
+<% end %>
+</ul>

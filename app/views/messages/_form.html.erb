@@ -1,0 +1,29 @@
+<div class="row-fluid">
+  <div class="span8 offset2">
+    
+<%= render 'shared/error_messages', object: @message %>
+
+    <div class="row-fluid">
+      
+    <div class="span6">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, class: "input-block-level" %>
+    </div>
+    <div class="span6">
+      <%= f.label :email %><br />
+      <%= f.text_field :email, class: "input-block-level" %>
+    </div>
+    </div>
+
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject, class: "input-block-level"  %>
+  
+    <%= f.label :body %><br />
+    <%= f.text_area :body, class: "input-block-level"  %>
+  <div class="actions">
+    <%= f.submit "Send Message", class: "btn btn-block btn-pink" %>
+  </div>
+<% end %>
+  </div>
+</div>
+

@@ -1,25 +1,11 @@
 <div class="row-fluid">
   <div class="span8 offset2"> 
     <%= form_for(@term,:html => {:class => "form-horizontal", :multipart => true}) do |f| %>
-      <% if @term.errors.any? %>
-        <div class ="row-fluid">
-          <div class="span12">
-            <div id="error_explanation">
-              <div class="alert alert-error">
-                <p class="lead"><%= pluralize(@term.errors.count, "error") %></p>
-                <ul class="unstyled">
-                  <% @term.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      
+      <%= render 'shared/error_messages', object: @term %>
 
       <div class="row-fluid">
-            <div class="span8">
+         
               <div class="row-fluid">
                 <div class="control-group span12">
                   <%= f.label :name %>
@@ -52,22 +38,26 @@
               </div>
 
             </div>
-            <div class="span4">
+            
               <!-- description -->
-              <div class="control-group span12">
-                <%= f.label :desc%>    
-                <%= f.text_area :desc, class: "input-block-level" %>
-              </div>
+             
+                <div class="row-fluid">
+                  <div class="control-group span12">
+                    <%= f.label :desc%>    
+                    <%= f.text_area :desc, class: "input-block-level", rows: "9" %>
+                  </div>              
             </div>
-      </div>
-      <div class="row-fluid">
+        <div class="row-fluid">
         <div class="control-group">
-          <%= f.file_field :photo, :title=>'Upload Thumbnail' %>
+          <%= f.file_field :photo, :title=>'Upload Image' %>
         </div>
         <div class="control-group">
-          <%= f.submit :class=>'btn btn-pink  '  %>
+          <%= f.submit :class=>'btn btn-pink'  %>
         </div>
+      </div>           
+         
       </div>
+     
 
       <!-- THUMBNAIL UPLOAD -->
       

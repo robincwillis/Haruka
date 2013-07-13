@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap.file-input
+//= require data-confirm-modal
 //= require_tree .

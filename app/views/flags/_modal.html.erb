@@ -1,0 +1,52 @@
+
+<div id="flagModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Please Tell Us the Reason for Calling Bullshit</h3>
+  </div>
+
+  <%= form_for [@flaggable, Flag.new], remote: true do |f| %>
+
+  <div class="modal-body">
+
+
+      <%= f.hidden_field :id, :value => @term.id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+
+      <!-- Obscene -->
+      <%= label_tag(:reason_1, class: "radio") do %>
+             <%= f.radio_button :reason, "This term is too obscene, even for this site.", checked: true %>
+            This term is too obscene, even for this site.
+      <% end %>
+
+
+      <!-- Irrelevant -->
+      <%= label_tag(:reason_2, class: "radio") do %>
+        <%= f.radio_button :reason, "This term is totally irrelevent to the dictionary." %>
+        This term is totally irrelevent to the dictionary.
+      <% end %>
+
+      <!-- Gibberish -->
+      <%= label_tag(:reason_3, class: "radio") do %>
+        <%= f.radio_button :reason, "This term does not make sense and is just garbage." %>
+        This term does not make sense and is just garbage.
+      <% end %>
+
+      <!-- No translation -->
+      <%= label_tag(:reason_4, class: "radio") do %>
+        <%= f.radio_button :reason, "This term does contain any Japanese to English Translation." %>
+        This term does contain any Japanese to English Translation.
+      <% end %>
+
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+     <%= button_tag(type: 'submit', class: "btn btn-pink") do %>
+      Submit Flag
+     <% end %>
+    <% end %>
+  </div>
+
+
+</div>

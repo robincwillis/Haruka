@@ -1,0 +1,14 @@
+  <% if @term.comments.any? %>
+<h2>Comments</h2>
+  <% @term.comments.each do |comment| %>
+    <p>
+      <%= comment.user.name %> 
+      <span class="light">
+      <%= comment.created_at.strftime("%m/%d/%Y") %>
+      </span>
+    </p>   
+    <p class="well">
+      <%= comment.body %>
+    </p>
+  <% end %>
+  <% end %>

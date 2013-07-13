@@ -3,7 +3,9 @@ class CommentsController < ApplicationController
 def create
 
 	@term = Term.find(params[:term_id])
-	@comment = @term.comments.create(params[:comment])
+	@comment = @term.comments.create(params[:comment].merge(
+            :user_id => current_user.id
+        ) )
 	
 	if @comment.save
 		redirect_to term_path(@term)

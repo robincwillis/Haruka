@@ -125,6 +125,11 @@ color:#000;
  border-bottom: 1px solid #d2d2d2;
  border-radius:0px;
   }
+
+  .nav-collapse .dropdown-menu a {
+    color:#b2b2b2;
+  font-size: 10px; 
+  }
  
 }
 
@@ -159,3 +164,63 @@ color:#000;
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
   border-radius:3px;
 }
+
+
+//accuracy bar
+
+.accuracy-bar-container{
+  width:100px;
+  height:20px;
+
+}
+
+.accuracy-bar-mask{
+  position: relative;
+  top:23%;
+  width:100%;
+  height:40%;
+  overflow: hidden;
+  border:1px solid #b2b2b2;
+}
+
+.accuracy-bar{
+  width:100px;
+  height:10px;
+  background: #ff2828;
+  background: -moz-linear-gradient(left, #ff2828 0%, #ffff00 50%, #00ff00 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ff2828), color-stop(50%,#ffff00), color-stop(100%,#00ff00));
+  background: -webkit-linear-gradient(left, #ff2828 0%,#ffff00 50%,#00ff00 100%);
+  background: -o-linear-gradient(left, #ff2828 0%,#ffff00 50%,#00ff00 100%);
+  background: -ms-linear-gradient(left, #ff2828 0%,#ffff00 50%,#00ff00 100%);
+  background: linear-gradient(to right, #ff2828 0%,#ffff00 50%,#00ff00 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff2828', endColorstr='#00ff00',GradientType=1 );
+}
+
+//Hack, Bootstrap tooltip causing button group to shift
+.btn-group > .tooltip + .btn,
+.btn-group > .popover + .btn{
+margin-left:-1px;
+}
+
+//Dropdown Menu
+
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
+  background-image:none;
+  background-color: hsl(346, 100%, 79%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffa8bc", endColorstr="#ff93ac");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffa8bc), to(#ff93ac));
+  background-image: -moz-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: -ms-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffa8bc), color-stop(100%, #ff93ac));
+  background-image: -webkit-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: -o-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: linear-gradient(#ffa8bc, #ff93ac);
+  border-color: #ff93ac #ff93ac hsl(346, 100%, 78%);
+}
+
+.dropdown-menu {
+  border-radius:0;
+  background-color:#f7f7f7;
+}
+

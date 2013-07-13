@@ -38,6 +38,13 @@ module SessionsHelper
     	user == current_user
   	end
 
+  	def signed_in_user
+	    unless signed_in?
+	      store_location
+	      redirect_to signin_url, notice: "Please sign in."
+	    end
+	  end
+
 	def redirect_back_or(default)
 		redirect_to(session[:return_to] || default)
 		session.delete(:return_to)
@@ -45,6 +52,10 @@ module SessionsHelper
 
 	def store_location
 		session[:return_to] = request.url
+	end
+
+	def owned(term)
+		current_user.id == term.user_id
 	end
 
 end

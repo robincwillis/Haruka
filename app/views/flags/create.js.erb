@@ -1,0 +1,7 @@
+
+$('#notice').append('<div class=" alert-temp alert alert-success">You flagged that shit <a class="close" data-dismiss="alert" href="#">&times;</a></div>');
+
+$('.alert-temp').alert();
+window.setTimeout(function() { $(".alert-temp").alert('close'); }, 2000);
+
+$('#flagModal').modal('hide');

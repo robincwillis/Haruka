@@ -1,5 +1,7 @@
+<h2>See Also</h2>
+<ul id="varients" class="unstyled">
 <% if @term.varients.any? %>
-	<ul id="varients" class="unstyled">
+	
 		<% for varient in @term.varients %>
 			<li>
 				<p>
@@ -12,15 +14,15 @@
 	 				<% end %>
 	 			<% end %>
 			 	  <% if signed_in? && current_user.admin? %>
-  <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, varient, method: :delete, id: 'delete', title:'Delete', data: { confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %><% end %> 
+  					<%= render 'shared/delete_mini', object: varient %>
+  					<% end %> 
 				 </p>
 			</li>
 		<% end %>
-	</ul>
 <% end %>
 
 <% if @term.inverse_term_varients.any? %>
-	<ul class="unstyled">
+
 		<% for varient in @term.inverse_term_varients %>
   			<li>
   				<p>
@@ -33,9 +35,10 @@
 	 				<% end %>
 	 			<% end %>
 	 			<% if signed_in? && current_user.admin? %>
-  <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, varient, method: :delete, id: 'delete', title:'Delete', data: { confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %><% end %> 
+  				<%= render 'shared/delete_mini', object: varient %>
+  				<% end %> 
   			</p>
 			</li>
 		<% end %>
-	</ul>
 <% end %>
+	</ul>

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def show
 	 @user = User.find(params[:id])
    @terms = @user.terms
+   @favorites = @user.favorite_terms
   end
 
   def edit
@@ -45,17 +46,9 @@ class UsersController < ApplicationController
 
   def destroy
 
-    @user = User.find(params[:id])
-
-    terms = @user.terms.dup
-    @user.destroy
-    terms.should_not be_empty
-    terms.each do |micropost|
-      # Make sure the micropost doesn't appear in the database.
-    end
-
+    User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
-    redirect_to users_url
+    redirect_to users_path
   end
 
   private
@@ -72,5 +65,6 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(terms_path) unless current_user.admin?
     end
+
 
 end

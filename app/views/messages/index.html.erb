@@ -1,0 +1,17 @@
+<h1>Listing messages</h1>
+
+
+
+<% @messages.each do |message| %>
+<ul>
+    <li><%= message.name %></li>
+    <li><%= message.email %></li>
+    <li><%= message.subject %></li>
+    <li><%= message.body %></li>
+    <li><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+</ul>
+<br>
+<% end %>
+<br />
+
+<%= link_to 'New Message', new_message_path %>

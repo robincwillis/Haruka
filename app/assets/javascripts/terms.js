@@ -12,8 +12,8 @@ $(document).ready(function() {
   $('#edit').tooltip();
   $('#delete').tooltip();
 
-  var a_items = [{"name":"alpha"},{"name": "beta"},{"name": "gamma"},{"name":"apple"},{"name": "bob"},{"name": "greedy"}];
-
+  var accuracy = $("#accuracy").data("accuracy");
+  $('.accuracy-bar-mask').width(accuracy);
 
 	var map = {};
 
@@ -41,10 +41,12 @@ $(document).ready(function() {
           type: "POST",
           success: function(data) {
               console.log( "Data Saved: " + JSON.stringify(data) );
-              var html='<li><b>'+data.name+'</b>  '+data.kanji+' ';
-              //not working need, the varient id not the term id
-              //html+= '<a href="/varients/'+data.id+'" data-method="delete" rel="nofollow">remove</a>';
-              html+='</li>';
+              //This is so ugly, bad bad bad
+              var html='<li><p><a href="/terms/'+data.id+'">'+data.name+' </a><span class="light">'+data.kanji+' '+data.kana+'</span> ';
+
+              //not working, cant destroy objects with links, need to do it with a form, urg
+              //html+= '<a href="/varients/'+data.id+'" data-method="delete" data-confirm="Are you sure?" rel="nofollow" title="Delete" class="btn btn-mini btn-danger"><i class="icon-remove icon-white"></i></a>';
+              html+='</p></li>';
               $("#varients").append(html);    
           },
           failure: function() {

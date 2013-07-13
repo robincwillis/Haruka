@@ -2,23 +2,37 @@
 
 <div class="row-fluid">
 	<div class="span4">
-		<h2><%= @user.name %></h2>	
-		<h2><%= @user.terms.count %> Terms</h2>
+
+<%= render 'stats' %>
+
 	</div>
-	<div class="span8">
-		<% if @user.terms.any? %>
+	<div class="span4">
+		<% if @favorites.any? %>
+	
+	
+	<h1>Favorites</h1>
+	<table class="table">
+		<tr>
+			<th>Name</th>
+			<th>Kanji</th>
+			<th>Kana</th>
+		</tr>
+		<% @favorites.each do |term| %>
+		<tr>
+	    <td><%= link_to term.name, term %></td>  
+	    <td><%= term.kanji %></td>
+	    <td><%= term.kana %></td>
+	  </tr>
+	  <% end %>
 
-			<table class="table">
-				<tr>
-					<th>Name</th>
-					<th>Kanji</th>
-					<th>Kana</th>
-				</tr>
-				<%= render @terms %>
-			</table>
-		
 
-		<% end %>
+	</table>
+
+	<% end %>
+
+	</div>
+	<div class="span4">
+		<%= render 'terms' %>	
 	</div>
 </div>
 

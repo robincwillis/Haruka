@@ -1,6 +1,9 @@
 class TermsController < ApplicationController
   
   include SessionsHelper
+
+  before_filter :signed_in_user, only: [:create, :destroy]
+
   # GET /terms
   # GET /terms.json
   def index
@@ -46,7 +49,7 @@ end
   # POST /terms.json
   def create
     @terms = Term.all
-    @term = Term.new(params[:term])
+    @term = current_user.terms.create(params[:term])
 
     respond_to do |format|
       if @term.save
@@ -84,7 +87,45 @@ end
 
     respond_to do |format|
       format.html { redirect_to terms_url }
-      format.json { head :no_content }
+      format.js
     end
   end
+
+  def vote_up
+    @term = Term.find(params[:id])
+    current_user.vote_exclusively_for(@term)
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def vote_down
+    @term = Term.find(params[:id])
+    current_user.vote_exclusively_against(@term)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def add_to_favorites
+    @term = Term.find(params[:id])
+    @favorite = current_user.favorites.create(user_id: current_user.id, term_id: params[:id])
+
+    respond_to do |format|
+      format.html { redirect_to @term, notice: 'Term added to Favorites.'}
+      format.js
+    end
+  end
+
+  def remove_from_favorites
+    @term = Term.find(params[:id])
+    Favorite.find_by_term_id(params[:id]).destroy
+
+    respond_to do |format|
+      format.html { redirect_to @term, notice: 'Term removed from Favorites.' }
+      format.js
+    end
+  end
+
+
 end

@@ -1,0 +1,24 @@
+<%= link_to_if(@term.photo?, image_tag(@term.photo.url(:thumb)), @term.photo.url) if @term.photo? %>
+
+<% if @term.kanji? %>
+  <h1><%= @term.kanji %></h1>
+<% end %>
+
+<% if @term.kana? %>
+  <h1><%= @term.kana %></h1>
+<% end %>
+
+<h2><%= @term.name %></h2>
+
+<% if @term.phonetic? %>
+<p><b class="light">Phonetic: </b><%= @term.phonetic %></p>
+<% end %>
+<% if @term.def? %>
+<p><b class="light">Definition: </b><%= @term.def %></p>
+<% end %>
+<% if @term.lit? %>
+<p><b class="light">Literal: </b><%= @term.lit %></p>
+<% end %>
+<% if @term.desc? %>
+<p><b class="light">Description: </b><%= @term.desc %></p>
+<% end %>

@@ -1,0 +1,13 @@
+<% if @user.terms.any? %>
+	<h1>Terms</h1>
+	<table class="table">
+		<tr>
+			<th>Name</th>
+			<th>Kanji</th>
+			<th>Kana</th>
+		</tr>
+		<%= render @terms %>
+	</table>
+
+
+<% end %>

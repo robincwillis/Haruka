@@ -20,8 +20,7 @@
 
 class Term < ActiveRecord::Base
 
-  belongs_to :user
-  has_many :phrases
+
 
   attr_accessible :def, :desc, :kana, :kanji, :lit, :name, :phonetic
 
@@ -34,14 +33,19 @@ class Term < ActiveRecord::Base
 
   validates :def, presence: true, length: { maximum: 22 }
   validates :desc, length: { maximum: 500 }
+  
 
-  has_many :comments
+  belongs_to :user
+  has_many :phrases, dependent: :destroy
+  has_many :flags, as: :flaggable, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :varients
   has_many :term_varients, :through => :varients
   has_many :inverse_varients, :class_name => "Varient", :foreign_key => "term_varient_id"
   has_many :inverse_term_varients, :through => :inverse_varients, :source => :term
+  has_many :favorites, dependent: :destroy
 
-
+  acts_as_voteable
   #Thumbnail
   attr_accessible :photo
 
@@ -50,6 +54,11 @@ class Term < ActiveRecord::Base
                     :thumb => "100x100#" }, 
                     :default_url => "/images/:style/missing.png"
 
+validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpeg|jpg)/
+
+validates_attachment_size :photo, :less_than => 2.megabytes
+
+default_scope order('created_at DESC')
 
   def self.search(search)
 	  if search
@@ -59,4 +68,8 @@ class Term < ActiveRecord::Base
 	  end
   end
 
+  def favorited?(user)
+    favorites.find_by_user_id(user.id)
+  end
+  
 end

@@ -1,0 +1,19 @@
+<% if @term.phrases.any? %>
+<h2>Phrases</h2>
+<ul class="unstyled">
+<% @term.phrases.each do |phrase| %>
+<li>
+
+<h4>Japanese</h4>
+<p class="well">
+<%= phrase.japanese %>
+</p>
+
+<h4>English</h4>
+<p class="well">
+<%= phrase.english %>
+</p>
+</li>
+<% end %>
+</ul>
+<% end %>

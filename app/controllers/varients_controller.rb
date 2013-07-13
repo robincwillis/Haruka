@@ -17,7 +17,7 @@ class VarientsController < ApplicationController
         format.json { render json: @term_varient, status: :created }
       else
         #flash[:error] = "shit"
-        format.html { redirect_to root_url }
+        format.html { redirect_to @term }
         format.js
         format.json { render json: @varient.errors, status: :unprocessable_entity }
       end
@@ -27,10 +27,13 @@ class VarientsController < ApplicationController
   # DELETE /varients/1
   # DELETE /varients/1.json
   def destroy
-    @varient = Varient.find(params[:id])
-    @varient.destroy
-
+    @term = Term.find(Varient.find(params[:id]).term_id)
+    Varient.find(params[:id]).destroy
+ 
     flash[:notice] = "Successfully destroyed varient."
-    redirect_to root_url
+    respond_to do |format|
+      format.html { redirect_to(@term) }
+      format.js { render nothing: true }
+    end
   end
 end

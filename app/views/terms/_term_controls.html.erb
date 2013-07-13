@@ -1,0 +1,41 @@
+<div class="well center">
+
+  <div class="btn-group">
+
+  <%= link_to '<i class="icon-arrow-down"></i>'.html_safe, vote_down_term_path(@term), id: 'vote-down', title:'Vote Down', class: 'btn btn-small', remote: true %>
+
+  <div id="accuracy" class="btn btn-small" title="<%= accuracy(@term) %> People Say Accurate" data-accuracy="<%= accuracy(@term) %>">
+      <div class="accuracy-bar-container">
+    <div class="accuracy-bar-mask">
+      <div class="accuracy-bar">
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <%= link_to '<i class="icon-arrow-up"></i>'.html_safe, vote_up_term_path(@term), id: 'vote-up', title:'Vote Up', class: 'btn btn-small',  remote: true %>
+
+
+  </div>
+
+   <% if !@term.favorited?(current_user) %>
+ 
+      <%= link_to '<i class="icon-heart"></i>'.html_safe, add_to_favorites_term_path(@term), id: 'save', title:'Save To Favorites', class: 'btn btn-small' %>
+
+      <% else %>
+
+            <%= link_to '<i class="icon-ban-circle"></i>'.html_safe, remove_from_favorites_term_path(@term), id: 'save', title:'Remove From Favorites', class: 'btn btn-small' %>
+
+
+   <% end %>
+
+  <%= link_to '<i class="icon-flag"></i>'.html_safe, "#flagModal", id: 'flag', title:'Call Bullshit', class: 'btn btn-small',  data: {:toggle=>"modal"} %>
+  <% if signed_in? %>
+
+
+  <%= link_to '<i class="icon-cog icon-white"></i>'.html_safe, edit_term_path(@term), id: 'edit', title:'Edit', class: "btn btn-small btn-pink" %> 
+  <% end %>
+  <% if current_user.admin? || owned(@term) %>
+  <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, @term, method: :delete, id: 'delete', title:'Delete', data: { confirm: 'Are you sure?'}, class: "btn btn-small btn-danger" %><% end %> 
+ </div>

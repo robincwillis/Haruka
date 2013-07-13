@@ -12,6 +12,7 @@
 
 class Comment < ActiveRecord::Base
   belongs_to :term
-  attr_accessible :author, :body
+  belongs_to :user
+  attr_accessible :user_id, :body
   validates :body, presence: true, length: {minimum: 10 }
 end
