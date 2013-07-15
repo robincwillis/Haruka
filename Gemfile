@@ -13,6 +13,12 @@ gem 'thumbs_up'
 gem 'sqlite3'
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
+gem 'rename'
+
+group :production do
+	gem 'mysql2'
+end
+
 group :developement do
 	gem 'annotate', '2.5.0'
 end
@@ -38,7 +44,8 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 gem 'debugger'
+

@@ -4,6 +4,7 @@ Dictionary::Application.routes.draw do
 
   root :to => 'home#index'
 
+  match '/o', to: 'home#index'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'messages#new'
 
