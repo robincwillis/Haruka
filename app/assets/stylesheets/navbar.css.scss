@@ -1,0 +1,84 @@
+.navbar-fixed-top, .navbar-fixed-bottom {
+  position:fixed !important;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.navbar-inner{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+
+.navbar .brand{
+  color:#b2b2b2;
+  font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial;
+  font-weight: 100;
+  color:#777;
+}
+
+.navbar .nav > li > a {
+  color:#b2b2b2;
+  font-size: 10px;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner{
+  background:#ededed;
+  background-color:rgb(237,237,237);
+  border-bottom: 1px solid #d2d2d2;
+  -moz-box-shadow: 0 4px 2px -2px #fff;
+  -webkit-box-shadow: 0 4px 2px -2px #fff;
+  box-shadow: 0 4px 2px -2px #fff;
+}
+
+.navbar .btn-navbar .icon-bar {
+
+  background-color:#d2d2d2;
+
+}
+
+@media (max-width: 979px){
+
+  .nav-collapse .navbar-form, .nav-collapse .navbar-search {
+    border-bottom:none;
+    border-top:none;
+  }
+
+  .nav-collapse .nav > li > a:hover, .nav-collapse .nav > li > a:focus, .nav-collapse .dropdown-menu a:hover, .nav-collapse .dropdown-menu a:focus {
+    background-color: transparent;/*you can change this color to anything*/
+    border-bottom: 1px solid #d2d2d2;
+    border-radius:0px;
+  }
+
+  .nav-collapse .dropdown-menu a {
+    color:#b2b2b2;
+    font-size: 10px; 
+  }
+
+  .nav-collapse .dropdown-menu .divider {
+    display: block;
+  }
+ 
+}
+
+//Dropdown Menu
+
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
+  background-image:none;
+  background-color: hsl(346, 100%, 79%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffa8bc", endColorstr="#ff93ac");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffa8bc), to(#ff93ac));
+  background-image: -moz-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: -ms-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffa8bc), color-stop(100%, #ff93ac));
+  background-image: -webkit-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: -o-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: linear-gradient(#ffa8bc, #ff93ac);
+  border-color: #ff93ac #ff93ac hsl(346, 100%, 78%);
+}
+
+.dropdown-menu {
+  border-radius:0;
+  background-color:#f7f7f7;
+}

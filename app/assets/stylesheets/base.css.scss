@@ -1,0 +1,67 @@
+
+body{
+  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro","メイリオ", meiryo, Arial, "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+  padding-top: 60px;
+  background:#f7f7f7;
+  background-color:rgb(247,247,247);
+}
+
+a{
+ color:#ea6da4;
+}
+
+a:hover,a:focus{
+  text-decoration: none;
+  color:red;
+}
+
+.light{
+  color:#b2b2b2;
+}
+
+.mini{
+  font-size:9px;
+  line-height: 15px;
+}
+
+textarea {
+	height: 110px;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+h2, h3{
+  font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial;
+  font-weight: 100;
+}
+
+.modal.fade {
+   -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+
+#notice{
+  position:absolute;
+  z-index:10000;
+  width:100%
+
+}
+
+.alert{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+img.thumbnail{
+  margin-right:20px;
+}

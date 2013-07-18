@@ -1,0 +1,36 @@
+//Buttons
+
+.btn{
+  border-radius:2px;
+}
+
+.btn-pink {
+  background-color: hsl(346, 100%, 79%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffa8bc", endColorstr="#ff93ac");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffa8bc), to(#ff93ac));
+  background-image: -moz-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: -ms-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffa8bc), color-stop(100%, #ff93ac));
+  background-image: -webkit-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: -o-linear-gradient(top, #ffa8bc, #ff93ac);
+  background-image: linear-gradient(#ffa8bc, #ff93ac);
+  border-color: #ff93ac #ff93ac hsl(346, 100%, 78%);
+  color: #fff !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.06);
+  -webkit-font-smoothing: antialiased;
+}
+
+//Hack, Bootstrap tooltip causing button group to shift
+.btn-group > .tooltip + .btn,
+.btn-group > .popover + .btn{
+margin-left:-1px;
+}
+
+
+//Forms
+
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+  border-radius:3px;
+}

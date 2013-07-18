@@ -48,6 +48,12 @@
                   </div>              
             </div>
         <div class="row-fluid">
+          <% if @term.photo.url %>
+          <p>
+            <%= image_tag @term.photo.url(:thumb), class: "thumbnail poloriod" %>
+          </p>
+          <% end %>
+
         <div class="control-group">
           <%= f.file_field :photo, :title=>'Upload Image' %>
         </div>

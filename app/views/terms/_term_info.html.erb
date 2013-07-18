@@ -1,12 +1,4 @@
-<%= link_to_if(@term.photo?, image_tag(@term.photo.url(:thumb)), @term.photo.url) if @term.photo? %>
 
-<% if @term.kanji? %>
-  <h1><%= @term.kanji %></h1>
-<% end %>
-
-<% if @term.kana? %>
-  <h1><%= @term.kana %></h1>
-<% end %>
 
 <h2><%= @term.name %></h2>
 

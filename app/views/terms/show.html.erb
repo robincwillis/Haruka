@@ -1,5 +1,24 @@
 <%= render 'shared/navigation' %>
 <div class="row-fluid">
+  <%= link_to_if(@term.photo?, image_tag(@term.photo.url(:thumb), class: 'pull-left img-polaroid thumbnail'), @term.photo.url) if @term.photo? %>
+  <% if @term.kanji? && @term.kana? %>
+      <h1><%= @term.kanji %></h1>
+      <h3><%= @term.kana %></h3>
+<% else %>
+  
+  <% if @term.kanji? %>
+  <h1><%= @term.kanji %></h1>
+<% end %>
+
+<% if @term.kana? %>
+  <h1><%= @term.kana %></h1>
+<% end %>
+
+
+<% end %>
+
+</div>
+<div class="row-fluid">
   <div class="span6">
     <%= render 'term_info' %>
     <%= render 'term_controls' %>

@@ -43,10 +43,10 @@
   <% if signed_in? %>
   <% if current_user.admin? or owned?(@term) %>
 
-  <%= link_to '<i class="icon-cog icon-white"></i>'.html_safe, edit_term_path(@term), id: 'edit', title:'Edit', class: "tooltip btn btn-small btn-pink" %> 
+  <%= link_to '<i class="icon-cog icon-white"></i>'.html_safe, edit_term_path(@term), id: 'edit', title:'Edit', class: "has-tooltip btn btn-small btn-pink" %> 
 
   
-  <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, @term, method: :delete, id: 'delete', title:'Delete', data: { confirm: 'Are you sure?'}, class: "tooltip btn btn-small btn-danger" %>
+  <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, @term, method: :delete, id: 'delete', title:'Delete', data: { confirm: 'Are you sure?'}, class: "has-tooltip btn btn-small btn-danger" %>
   
   <% end %> 
   <% end %>
