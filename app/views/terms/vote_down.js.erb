@@ -1,5 +1,19 @@
 var name = "<%= escape_javascript(@term.name) %>"
-$('#notice').append('<div class=" alert-temp alert alert-success">You voted down '+name+' <a class="close" data-dismiss="alert" href="#">&times;</a></div>');
+$('#notice').append('<div class=" alert-temp alert alert-success fade in">You voted down '+name+' <a class="close" data-dismiss="alert" href="#">&times;</a></div>');
 
-$('.alert-temp').alert();
-window.setTimeout(function() { $(".alert-temp").alert('close'); }, 2000);
+function fadeAlert() {
+   $(".alert-temp").removeClass("in");
+  }
+
+function removeAlert() {
+   $(".alert-temp").remove();
+}
+
+
+window.setTimeout(function () {
+    fadeAlert();
+}, 1000);
+
+window.setTimeout(function () {
+    removeAlert();
+}, 3000);

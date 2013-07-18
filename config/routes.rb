@@ -1,10 +1,10 @@
-Dictionary::Application.routes.draw do
+Haruka::Application.routes.draw do
 
 
 
   root :to => 'home#index'
 
-  match '/o', to: 'home#index'
+  match '/o', to: 'terms#index'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'messages#new'
 
@@ -13,8 +13,8 @@ Dictionary::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
   resources :terms do
-    resources :comments
-    resources :phrases
+    resources :comments, only: [ :create, :destroy]
+    resources :phrases, only: [:new, :create, :destroy]
     member do
       get :vote_up
       get :vote_down
@@ -25,9 +25,12 @@ Dictionary::Application.routes.draw do
 
   resources :varients
   resources :term_varients
+
   resources :users do
     member do
       get :favorites
+      get :make_admin
+      get :destroy_admin
     end
   end
 

@@ -1,7 +1,18 @@
+$('#notice').append('<div class="alert-temp alert alert-success fade in">You flagged that shit <a class="close" data-dismiss="alert" href="#">&times;</a></div>');
 
-$('#notice').append('<div class=" alert-temp alert alert-success">You flagged that shit <a class="close" data-dismiss="alert" href="#">&times;</a></div>');
+function fadeAlert() {
+   $(".alert-temp").removeClass("in");
+  }
 
-$('.alert-temp').alert();
-window.setTimeout(function() { $(".alert-temp").alert('close'); }, 2000);
+function removeAlert() {
+   $(".alert-temp").remove();
+}
 
-$('#flagModal').modal('hide');
+
+window.setTimeout(function () {
+    fadeAlert();
+}, 1000);
+
+window.setTimeout(function () {
+    removeAlert();
+}, 3000);

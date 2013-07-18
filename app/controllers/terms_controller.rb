@@ -2,7 +2,8 @@ class TermsController < ApplicationController
   
   include SessionsHelper
 
-  before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :signed_in_user, only: [:create, :edit, :update, :destroy]
+  before_filter :can_edit,   only: [:edit, :update, :destroy]
 
   # GET /terms
   # GET /terms.json
@@ -53,7 +54,7 @@ end
 
     respond_to do |format|
       if @term.save
-        format.html { redirect_to @term, notice: 'Term was successfully created.' }
+        format.html { redirect_to @term, notice: "#{@term.name} was successfully created." }
         format.json { render json: @term, status: :created, location: @term }
       else
         format.html { render action: "new" }
@@ -70,7 +71,7 @@ end
 
     respond_to do |format|
       if @term.update_attributes(params[:term])
-        format.html { redirect_to @term, notice: 'Term was successfully updated.' }
+        format.html { redirect_to @term, notice: "#{@term.name} was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -126,6 +127,18 @@ end
       format.js
     end
   end
+
+  private
+
+    def signed_in_user
+      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+    end
+
+    def can_edit
+      @term = Term.find(params[:id])
+      @user = User.find(@term.user_id)
+      redirect_to(terms_path) unless current_user?(@user) else current_user.admin?
+    end
 
 
 end

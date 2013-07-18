@@ -1,4 +1,6 @@
+<% if @term.varients.any? || @term.inverse_term_varients.any? %>
 <h2>See Also</h2>
+<% end %>
 <ul id="varients" class="unstyled">
 <% if @term.varients.any? %>
 	

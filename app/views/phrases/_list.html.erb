@@ -1,19 +1,20 @@
 <% if @term.phrases.any? %>
-<h2>Phrases</h2>
-<ul class="unstyled">
-<% @term.phrases.each do |phrase| %>
-<li>
+	<h2>Phrases</h2>
+	<ol>
+		<% @term.phrases.each do |phrase| %>
+			<li>
+				      <% if signed_in? %>
+					      <% if current_user.admin? %>
+					       <p>
+					        <%= render 'shared/delete_mini', object: [phrase.term, phrase] %>
+					      	</p>
+					      <% end %>
+				      <% end %>
+					<p><small><em>"<%= phrase.japanese %>"</em></small></p>
+					<p><small><em>"<%= phrase.english %>"</em></small></p>
 
-<h4>Japanese</h4>
-<p class="well">
-<%= phrase.japanese %>
-</p>
+			</li>
+		<% end %>
+	</ol>
+<% end %>
 
-<h4>English</h4>
-<p class="well">
-<%= phrase.english %>
-</p>
-</li>
-<% end %>
-</ul>
-<% end %>

@@ -1,8 +1,9 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-// You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
 $(document).ready(function() {
+
+  //Hack, tooltips screw up mobile touches
+  $('.has-tooltip').on('show', function (e) {
+    if ('ontouchstart' in document.documentElement) e.preventDefault();
+  });
 
   $('#vote-up').tooltip();
   $('#vote-down').tooltip();
@@ -40,7 +41,7 @@ $(document).ready(function() {
           dataType: 'json',
           type: "POST",
           success: function(data) {
-              console.log( "Data Saved: " + JSON.stringify(data) );
+              
               //This is so ugly, bad bad bad
               var html='<li><p><a href="/terms/'+data.id+'">'+data.name+' </a><span class="light">'+data.kanji+' '+data.kana+'</span> ';
 

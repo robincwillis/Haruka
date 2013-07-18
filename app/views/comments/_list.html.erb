@@ -6,6 +6,11 @@
       <span class="light">
       <%= comment.created_at.strftime("%m/%d/%Y") %>
       </span>
+      <% if signed_in? %>
+        <% if current_user.admin? %>
+          <%= render 'shared/delete_mini', object: [comment.term, comment] %>
+        <% end %>
+      <% end %>
     </p>   
     <p class="well">
       <%= comment.body %>

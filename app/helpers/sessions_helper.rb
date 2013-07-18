@@ -54,7 +54,7 @@ module SessionsHelper
 		session[:return_to] = request.url
 	end
 
-	def owned(term)
+	def owned?(term)
 		current_user.id == term.user_id
 	end
 

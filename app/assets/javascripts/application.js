@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require bootstrap.file-input
 //= require data-confirm-modal
+//= require temp-alert
 //= require_tree .

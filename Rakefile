@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Dictionary::Application.load_tasks
+Haruka::Application.load_tasks

@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to terms_path, notice: 'Message Sent! Well be in touch' }
+        format.html { redirect_to terms_path, notice: ' Your message was sent! We will be in touch' }
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }
@@ -58,11 +58,6 @@ class MessagesController < ApplicationController
 
     def signed_in_user
       redirect_to signin_url, notice: "Please sign in." unless signed_in?
-    end
-
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(terms_path) unless current_user?(@user)
     end
 
     def admin_user

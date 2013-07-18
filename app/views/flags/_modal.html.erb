@@ -9,10 +9,10 @@
 
   <div class="modal-body">
 
-
-      <%= f.hidden_field :id, :value => @term.id %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-
+      <% if signed_in? %>
+        <%= f.hidden_field :id, :value => @term.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+      <% end %>
       <!-- Obscene -->
       <%= label_tag(:reason_1, class: "radio") do %>
              <%= f.radio_button :reason, "This term is too obscene, even for this site.", checked: true %>
@@ -42,11 +42,16 @@
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-     <%= button_tag(type: 'submit', class: "btn btn-pink") do %>
+     <%= button_tag(type: 'submit', class: "btn btn-pink confirm") do %>
       Submit Flag
      <% end %>
     <% end %>
   </div>
 
+  <script type="text/javascript">
+    $('.confirm').click(function(){
+      $("#flagModal").modal('hide');
+    });
+  </script>
 
 </div>

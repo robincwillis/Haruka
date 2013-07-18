@@ -6,9 +6,23 @@
     <li>
       <%= link_to user.name, user %>
       <% if current_user.admin? && !current_user?(user) %>
-    | <%= button_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
+
+       <%= render 'shared/delete_mini', object: user %>
+      
+        <% if user.admin? %>
+
+       <%= link_to "Remove Admin", destroy_admin_user_path(user), class: "btn btn-mini btn-inverse" %>
+       <% else %>
+		<%= link_to "Make Admin", make_admin_user_path(user), class: "btn btn-mini" %>
        <% end %>
+
+       <% end %>
+      
     </li>
   <% end %>
+
+  <script type="text/javascript">
+  #('.commit').addClass('dismiss')
+  </script>
+
 </ul>

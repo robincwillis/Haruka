@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :favorite_terms, through: :favorites, source: :term
 
   attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessor :accessible
   has_secure_password
   acts_as_voter
   
@@ -32,6 +33,10 @@ class User < ActiveRecord::Base
   after_validation { self.errors.messages.delete(:password_digest) }
 
     private
+
+    def mass_assignment_authorizer(role = :default)
+        super(role) + (accessible || [])
+    end
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64

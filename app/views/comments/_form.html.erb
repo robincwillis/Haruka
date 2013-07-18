@@ -1,16 +1,17 @@
 <% if signed_in? %>
 <h2>Add a Comment:</h2>
-<%= form_for([@term, @term.comments.build]) do |f| %>
+  <%= form_for([@term, @term.comments.build]) do |f| %>
 
-	<%# f.hidden_field current_user %>
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: "input-block-level" %>
-  </div>
-  <div class="actions">
-    <%= button_tag(type: 'submit', class: "btn") do %>
-    <i class="icon-comment"></i> Add Comment
-    <% end %>
-  </div>
-<% end %>
+   
+
+    <div class="field">
+      <%= f.label :body %>
+      <%= f.text_area :body, class: "input-block-level" %>
+    </div>
+    <div class="actions">
+      <%= button_tag(type: 'submit', class: "btn") do %>
+      <i class="icon-comment"></i> Add Comment
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

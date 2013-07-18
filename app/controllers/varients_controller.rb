@@ -1,5 +1,7 @@
 class VarientsController < ApplicationController
   
+  before_filter :can_edit,   only: [:create, :destroy]
+
   # POST /varients
   # POST /varients.json
   def create
@@ -12,7 +14,7 @@ class VarientsController < ApplicationController
 
       if @varient.save
         #flash[:notice] = "Successfully created varient."
-        format.html { redirect_to(@term, notice: "Varient Created") }
+        format.html { redirect_to(@term, notice: "Varient #{@varient.name} Created") }
         format.js
         format.json { render json: @term_varient, status: :created }
       else
@@ -36,4 +38,13 @@ class VarientsController < ApplicationController
       format.js { render nothing: true }
     end
   end
+
+private
+
+    def can_edit
+      @term = Term.find(params[:id])
+      @user = User.find(@term.user_id)
+      redirect_to(terms_path) unless current_user?(@user) else current_user.admin?
+    end
+
 end
