@@ -63,6 +63,7 @@ default_scope order('created_at DESC')
   def self.search(search)
 	  if search
 	    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+      find(:all, :conditions => ['name LIKE :search OR kanji LIKE :search OR kana LIKE :search OR def LIKE :search OR phonetic LIKE :search OR lit LIKE :search', {:search => "%#{search}%"}])
 	  else
 	    find(:all)
 	  end

@@ -123,6 +123,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    recaptcha (0.3.5)
     rename (1.0.0)
       rails (>= 3.0.0)
     sass (3.2.9)
@@ -154,6 +155,7 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    yaml_db (0.2.3)
 
 PLATFORMS
   ruby
@@ -170,8 +172,10 @@ DEPENDENCIES
   mysql2
   paperclip (~> 3.0)
   rails (= 3.2.13)
+  recaptcha
   rename
   sass-rails (~> 3.2.3)
   sqlite3
   thumbs_up
   uglifier (>= 1.0.3)
+  yaml_db

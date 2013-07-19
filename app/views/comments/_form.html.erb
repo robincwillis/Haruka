@@ -1,11 +1,9 @@
-<% if signed_in? %>
+<%# if signed_in? %>
 <h2>Add a Comment:</h2>
+  
   <%= form_for([@term, @term.comments.build]) do |f| %>
 
-   
-
     <div class="field">
-      <%= f.label :body %>
       <%= f.text_area :body, class: "input-block-level" %>
     </div>
     <div class="actions">
@@ -14,4 +12,4 @@
       <% end %>
     </div>
   <% end %>
-<% end %>
+<%# end %>

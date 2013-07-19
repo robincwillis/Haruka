@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 	        ) )
 		
 		if @comment.save
-			flash[:error] = "Comment added to #{@term.name}"
+			flash[:sucess] = "Comment added to #{@term.name}"
 			redirect_to @term
 		else
 			flash[:error] = "Couldn't create that comment. It must be at least 5 characters"

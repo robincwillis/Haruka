@@ -10,6 +10,7 @@
 </head>
 <body>
 	<%= render 'layouts/header' %>
+  
   <div id="notice">
     <% flash.each do |key, value| %>
      <div class="alert-temp alert alert-success fade in alert-<%= key %>"><%= value %></div>

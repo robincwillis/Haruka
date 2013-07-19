@@ -50,7 +50,7 @@
         <div class="row-fluid">
           <% if @term.photo.url %>
           <p>
-            <%= image_tag @term.photo.url(:thumb), class: "thumbnail poloriod" %>
+            <%= link_to_if(@term.photo?, image_tag(@term.photo.url(:thumb), class: 'pull-left img-polaroid thumbnail'), @term.photo.url) if @term.photo? %>
           </p>
           <% end %>
 

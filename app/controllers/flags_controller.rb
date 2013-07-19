@@ -32,7 +32,7 @@ class FlagsController < ApplicationController
 		@flag = Flag.find(params[:id])
 		@flag.destroy
 		flash[:notice] = "Destroyed flag."
-		render flags_url
+		redirect_to flags_url
 	end
 
 private

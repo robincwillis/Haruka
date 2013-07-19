@@ -23,24 +23,28 @@
 		<% end %>
 <% end %>
 
-<% if @term.inverse_term_varients.any? %>
 
-		<% for varient in @term.inverse_term_varients %>
-  			<li>
-  				<p>
-	  			<%= link_to varient.name, varient %>
-	  			<% if varient.kanji? %>
-	  				<span class="light"> <%= varient.kanji %></span>
-  				<% else %>
-  					<% if varient.kana? %> 
-	 					<span class="light"> <%= varient.kana %></span>
-	 				<% end %>
-	 			<% end %>
-	 			<% if signed_in? && current_user.admin? %>
-  				<%= render 'shared/delete_mini', object: varient %>
-  				<% end %> 
-  			</p>
-			</li>
-		<% end %>
+<% if @term.inverse_varients.any? %>
+
+	<% for varient in @term.inverse_varients %>
+
+		<li>
+			<p>
+			<%= link_to varient.term.name, varient.term %>
+			<% if varient.term.kanji? %>
+				<span class="light"> <%= varient.term.kanji %></span>
+			<% else %>
+				<% if varient.term.kana? %> 
+					<span class="light"> <%= varient.term.kana %></span>
+				<% end %>
+			<% end %>
+			<% if signed_in? && current_user.admin? %>
+				<%= render 'shared/delete_mini', object: varient %>
+			<% end %> 
+			 </p>
+		</li>
 <% end %>
-	</ul>
+<% end %>
+
+
+</ul>

@@ -19,7 +19,7 @@
     <th>Kanji</th>
     <th>Kana</th>
     <th>Phonetic</th>
-    <th>Definition</th>
+
   </tr>
 
 <% @terms.keys.sort.each do |starting_letter| %>
@@ -30,7 +30,7 @@
     <td></td>
     <td></td>
     <td></td>
-    <td></td>
+
 
   </tr>
   <% @terms[starting_letter].each do |term| %>
@@ -39,7 +39,6 @@
     <td><%= term.kanji %></td>
     <td><%= term.kana %></td>
     <td><%= term.phonetic %></td>
-    <td><%= term.def %></td>
   </tr>
   <% end %>
 <% end %>

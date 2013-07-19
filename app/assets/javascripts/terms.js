@@ -32,7 +32,7 @@ $(document).ready(function() {
       updater: function (item) {
 
         var object = {"term_id":term.id,"term_varient_id":map[item].id};
-        console.log(object);
+
         $.ajax({
           //TODO: should not hardcode this but fetch it from erb view
           url: "/varients",
@@ -41,12 +41,12 @@ $(document).ready(function() {
           dataType: 'json',
           type: "POST",
           success: function(data) {
-              
+              console.log(data);
               //This is so ugly, bad bad bad
-              var html='<li><p><a href="/terms/'+data.id+'">'+data.name+' </a><span class="light">'+data.kanji+' '+data.kana+'</span> ';
+              var html='<li><p><a href="/terms/'+data.term_varient.id+'">'+data.term_varient.name+' </a><span class="light">'+data.term_varient.kanji+' '+data.term_varient.kana+'</span> ';
 
               //not working, cant destroy objects with links, need to do it with a form, urg
-              //html+= '<a href="/varients/'+data.id+'" data-method="delete" data-confirm="Are you sure?" rel="nofollow" title="Delete" class="btn btn-mini btn-danger"><i class="icon-remove icon-white"></i></a>';
+              html+= '<a href="/varients/'+data.varient.id+'" data-method="delete" data-confirm="Are you sure?" rel="nofollow" title="Delete" class="btn btn-mini btn-danger"><i class="icon-remove icon-white"></i></a>';
               html+='</p></li>';
               $("#varients").append(html);    
           },

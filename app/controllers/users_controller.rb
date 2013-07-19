@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   	@user = User.new
     @user.accessible = []#:all if false#current_user.nil?
     @user.attributes = params[:user]
-  	if @user.save
+  	if verify_recaptcha(model: @user) && @user.save
   	  flash[:success] = "Hello #{@user.name}, Welcome to Haruka!"
       sign_in @user
       redirect_to terms_path

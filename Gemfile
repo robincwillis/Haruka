@@ -12,8 +12,9 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'thumbs_up'
 gem 'sqlite3'
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
-
+gem "recaptcha", :require => "recaptcha/rails"
 gem 'rename'
+gem 'yaml_db'
 
 group :production do
 	gem 'mysql2'

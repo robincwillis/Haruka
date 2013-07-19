@@ -2,6 +2,8 @@ Haruka::Application.routes.draw do
 
 
 
+  get "password_resets/new"
+
   root :to => 'home#index'
 
   match '/o', to: 'terms#index'
@@ -38,6 +40,6 @@ Haruka::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :flags, only: [:index, :new, :create, :destroy]
   resources :messages, only: [:index, :new, :create, :destroy]
-
+  resources :password_resets
 
 end

@@ -50,18 +50,28 @@ h2, h3{
 }
 
 
-#notice{
-  position:absolute;
-  z-index:10000;
-  width:100%
-
-}
-
-.alert{
+.alert-temp{
   margin-left:20px;
   margin-right:20px;
 }
 
 img.thumbnail{
   margin-right:20px;
+}
+
+#notice{
+  left:0;
+  position:absolute;
+  z-index:10000;
+  width:100%;
+}
+
+.recaptchatable a, .recaptchatable a:hover {
+color:#000 !important;
+  }
+
+  #recaptcha_area
+{
+    margin: 0 auto;
+    width:450px;
 }

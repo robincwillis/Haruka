@@ -4,17 +4,21 @@
 	<% if !term.flags.empty? %>
 		<li><%= link_to term.name, term %> [Flags: <%= term.flags.count %> ] 
 			[by: <%=  User.find(term.user_id).name %>]
-			<a href="#" title="">Delete</a></li>
-		<ul class="well">
+			<%= render 'shared/delete_mini', object: term %>
+		<ul class="well unstyled">
 			<% term.flags.each do |flag| %>
-			<li>
+			<li><p>
+					<%= flag.reason %> 
 			
 					<% if flag.user_id? %>
-					[Flagged By: <%= User.find(flag.user_id).name %>]
+						<% if User.exists? id: flag.user_id %>
+							[Flagged By: <%= User.find(flag.user_id).name %>]
+						<% end %>
 					<% end %>
-					<%= flag.reason %> 
-				<a href="#" title="">Delete</a></li>
+					
+				<%= render 'shared/delete_mini', object: flag %>
 			<% end %>
+			</p>
 		</ul>
 		
 	<% end %>
