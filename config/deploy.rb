@@ -25,6 +25,7 @@ server "ec2-54-235-165-113.compute-1.amazonaws.com",:app, :web, :db, :primary =>
 
 # if you want to clean up old releases on each deploy uncomment this:
 after 'deploy:update', 'db:db_config'
+after 'deploy:update', 'config:env_config'
 after 'deploy', 'deploy:precompile'
 after 'deploy', 'deploy:cleanup'
 after 'deploy', 'deploy:migrate'
@@ -35,6 +36,12 @@ after 'deploy', 'deploy:migrate'
 namespace :db do
   task :db_config, :except => { :no_release => true }, :role => :app do
     run "cp -f /home/haruka/database.yml #{latest_release}/config/database.yml"
+  end
+end
+
+namespace :config do
+  task :env_config, :except => { :no_release => true }, :role => :app do
+    run "cp -f /home/haruka/local_env.yml #{latest_release}/config/local_env.yml"
   end
 end
 
