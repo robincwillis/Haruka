@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pink Jisho <%= yield(:title) %></title>
+  <title><%= ENV["NAME"] %> <%= yield(:title) %></title>
+ 
+  <meta name="description" content=""/>
+  <meta name="keywords" content="" />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -22,7 +26,10 @@
 		<%= yield %>
 		<%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
-      <% if Rails.env.production? %>
+
+
+	</div>
+	      <%# if Rails.env.production? %>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -32,8 +39,6 @@
           ga('create', 'UA-4803873-3', 'pinkji.sh');
           ga('send', 'pageview');
         </script>
-      <% end %>
-	</div>
-	
+        <%# end %>
 </body>
 </html>

@@ -29,7 +29,8 @@ class Term < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }, 
                     length: { maximum: 22 },
                     format: { with: VALID_NAME_REGEX }
-  
+
+  before_save :capitalize_name  
 
   validates :def, presence: true, length: { maximum: 22 }
   validates :desc, length: { maximum: 500 }
@@ -59,6 +60,10 @@ validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpe
 validates_attachment_size :photo, :less_than => 2.megabytes
 
 default_scope order('created_at DESC')
+
+  def capitalize_name
+    self.name[0] = name.first.capitalize[0]
+  end
 
   def self.search(search)
 	  if search

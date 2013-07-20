@@ -5,7 +5,7 @@
   <% if signed_in? %>
     <li><p><%= link_to 'New Term', new_term_path, class: "btn btn-pink" %></p></li>
   <% end %>
-<%= render 'alphabet' %>
+
 </ul>
 
 </div>
@@ -22,18 +22,7 @@
     <th></th>
   </tr>
 
-<% @terms.keys.sort.each do |starting_letter| %>
-  <tr>
-    <td>
- <h3 id="<%= starting_letter %>"><%= starting_letter %></h3>
-    </td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-
-  </tr>
-  <% @terms[starting_letter].each do |term| %>
+  <% @terms.each do |term| %>
   <tr>
     <td><%= link_to term.name, term %></td>  
     <td><%= term.kanji %></td>
@@ -42,7 +31,7 @@
     <td><%= render "shared/like", object: term %></td>
   </tr>
   <% end %>
-<% end %>
+
 </table>
 
 </div>

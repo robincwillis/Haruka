@@ -9,7 +9,7 @@ Haruka::Application.routes.draw do
   match '/o', to: 'terms#index'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'messages#new'
-
+  match 'reset_password', to: 'password_resets#new'
   match '/register', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

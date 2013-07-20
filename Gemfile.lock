@@ -39,6 +39,11 @@ GEM
     annotate (2.5.0)
       rake
     arel (3.0.2)
+    aws-ses (0.5.0)
+      builder
+      mail (> 2.2.5)
+      mime-types
+      xml-simple
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.3.1.2)
       sass (~> 3.2)
@@ -81,6 +86,8 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta-tags (1.5.0)
+      actionpack
     mime-types (1.23)
     multi_json (1.7.7)
     mysql2 (0.3.13)
@@ -155,6 +162,7 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    xml-simple (1.1.2)
     yaml_db (0.2.3)
 
 PLATFORMS
@@ -162,6 +170,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (= 2.5.0)
+  aws-ses (~> 0.5.0)
   bcrypt-ruby (= 3.0.1)
   bootstrap-sass (= 2.3.1.2)
   capistrano
@@ -169,6 +178,7 @@ DEPENDENCIES
   data-confirm-modal!
   debugger
   jquery-rails
+  meta-tags
   mysql2
   paperclip (~> 3.0)
   rails (= 3.2.13)

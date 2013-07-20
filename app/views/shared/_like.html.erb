@@ -1,0 +1,13 @@
+<% if signed_in? %>
+   
+   <% if !object.favorited?(current_user) %>
+ 
+    	<%= link_to '<i class="icon-heart"></i>'.html_safe, add_to_favorites_term_path(object), id: 'save', title:'Save To Favorites', class: 'has-tooltip' %>
+
+      <% else %>
+
+	    <%= link_to '<i class="icon-ban-circle"></i>'.html_safe, remove_from_favorites_term_path(object), id: 'save', title:'Remove From Favorites', class: 'has-tooltip' %>
+
+
+   <% end %>
+<% end %>

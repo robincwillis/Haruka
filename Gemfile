@@ -15,6 +15,8 @@ gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'rename'
 gem 'yaml_db'
+gem 'meta-tags', :require => 'meta_tags'
+gem 'aws-ses', '~>0.5.0', :require => 'aws/ses'
 
 group :production do
 	gem 'mysql2'

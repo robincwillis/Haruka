@@ -8,13 +8,21 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    @terms = Term.all
     #temp for now, should replace with http://pat.github.io/thinking-sphinx/
-    @terms = Term.search(params[:search]).group_by{|u| u.name[0]}
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @terms }
+      
+      if params[:latest]
+        @terms = Term.last(50).reverse
+         format.html { render "latest" }
+         format.json { render json: @terms }
+      else
+        @terms = Term.search(params[:search]).group_by{|u| u.name[0]}
+        format.html # index.html.erb
+        format.json { render json: @terms }
+    
+
     end
+  end
 end
   # GET /terms/1
   # GET /terms/1.json

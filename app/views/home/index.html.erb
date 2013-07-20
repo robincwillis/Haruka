@@ -1,12 +1,12 @@
 
 <div class="center hero-unit">
-<h1>遼</h1>
-<h2>Pink Jisho</h2>
-<p>A Japanese to English Slang, Erotic and Fetish Dictionary by the Internet</p>
+<h1><%= ENV["SPLASH"] %></h1>
+<h2><%= ENV["NAME"] %></h2>
+<p><%= ENV["TAGLINE"] %></p>
 <p>
 <%= link_to "Enter", terms_path, class: "btn btn-large btn-pink" %>
 <%= link_to "Leave", "http://google.com", class: "btn btn-large" %>
 </p>
-<p class="mini">By entering this site you are acknowledging that you are over the age of 18, are not a member of any right-wing, conservative or religious groups and have some kind of sense of humor.</p>
+<p class="mini"><%= ENV["DISCLAIMER"] %></p>
 
 </div>
