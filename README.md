@@ -12,10 +12,11 @@ ruby 1.9.3
 
 Installation
 ------
-
-1.cd config
-2.cp database.yml.example database.yml
-3.cp local_env.example local_env.yml
-4.Set required environment variables and database settings
-5.rake db:create
-6.rake db:migrate
+```
+cd config
+cp database.yml.example database.yml
+cp local_env.example local_env.yml
+Set required environment variables and database settings
+rake db:create
+rake db:migrate
+```
