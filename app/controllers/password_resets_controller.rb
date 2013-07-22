@@ -2,6 +2,9 @@ class PasswordResetsController < ApplicationController
   
 
   def new
+
+        @page_title = 'Reset your password'
+
   end
 
   def create

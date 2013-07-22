@@ -1,6 +1,5 @@
+
 <div class="row-fluid">
-
-
 <ul class="inline">
   <% if signed_in? %>
     <li><p><%= link_to 'New Term', new_term_path, class: "btn btn-pink" %></p></li>
@@ -33,7 +32,7 @@
     <td></td>
 
   </tr>
-  <% @terms[starting_letter].each do |term| %>
+  <% for term in @terms[starting_letter].sort_by(&:name) do %>
   <tr>
     <td><%= link_to term.name, term %></td>  
     <td><%= term.kanji %></td>

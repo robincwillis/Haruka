@@ -8,7 +8,9 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    #temp for now, should replace with http://pat.github.io/thinking-sphinx/
+
+    @page_title = 'Terms'
+
     respond_to do |format|
       
       if params[:latest]
@@ -29,6 +31,11 @@ end
   def show
     @term = Term.find(params[:id])
     @terms = Term.all
+
+    @page_title = @term.name
+
+    #@page_keywords = 
+    set_meta_tags keywords: ENV['META_KEYWORDS'] + ", "+ @term.name
 
     respond_to do |format|
       format.html # show.html.erb
@@ -52,6 +59,8 @@ end
   def edit
     @term = Term.find(params[:id])
     @terms = Term.all
+
+    @page_title ="Edit " + @term.name
   end
 
   # POST /terms
@@ -59,6 +68,8 @@ end
   def create
     @terms = Term.all
     @term = current_user.terms.create(params[:term])
+
+    @page_title = "New Term"
 
     respond_to do |format|
       if @term.save

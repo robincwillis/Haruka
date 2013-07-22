@@ -1,13 +1,13 @@
-<% provide(:title, 'About') %>
+
 		<h1>About</h1>
 <div class="row-fluid">
 	<div class="span8 offset2">
 
-		<h2>So what is Pink Jisho?</h2>
-		<p>Pink Jisho aim's the be the simple and definitive Japanese to English dirty dictionary. Rather than be any authority on the subject it opens it's doors to anyone willing to contribute. It isn't intented to be a Wiki of subjects but just provide the Japanese written translation for them. With that knowledge in hand you can google them, ask drunken salary men about them or use them in your haikus.</p>
+		<h2>So what is <%= ENV['NAME'] %>?</h2>
+		<p><%= ENV['ABOUT'] %></p>
 			
 		<h2>Cool, so What can I Do Here?</h2>
-		<p>Anyone can browse the dictionary and read all the translations. However if you want to contribute to the dictionary you will need to register an account. From there you can create terms and supply them with the proper kanji, kana, as well as other options such as literal translations or deeper descriptions. After registering you will also be able to keep track of your terms and create a collection of favorites. In addition to providing translations Pink Jisho sports features such as the ability to add phrases to terms, create associations between similar terms, comment, rate their accuracy and more. </p>
+		<p>Anyone can browse the dictionary and read all the translations. However if you want to contribute to the dictionary you will need to register an account. From there you can create terms and supply them with the proper kanji, kana, as well as other options such as literal translations or deeper descriptions. After registering you will also be able to keep track of your terms and create a collection of favorites. In addition to providing translations <%= ENV['NAME'] %> sports features such as the ability to add phrases to terms, create associations between similar terms, comment, rate their accuracy and more. </p>
 
 		<h2>I love this, how can I do more?</h2>
 		<p>If this is really your thing and want to do more message us with your expressed interest. We can upgrade your account to give you greater management and creation abilities.</p>

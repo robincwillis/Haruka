@@ -75,6 +75,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    friendly_id (4.0.9)
     highline (1.6.19)
     hike (1.2.3)
     i18n (0.6.1)
@@ -177,6 +178,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   data-confirm-modal!
   debugger
+  friendly_id
   jquery-rails
   meta-tags
   mysql2

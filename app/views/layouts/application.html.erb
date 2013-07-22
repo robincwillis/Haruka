@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= ENV["NAME"] %> <%= yield(:title) %></title>
- 
-  <meta name="description" content=""/>
-  <meta name="keywords" content="" />
-  
+
+  <%= display_meta_tags site: ENV["NAME"], keywords: ENV["META_KEYWORDS"] , description: ENV["META_DESCRIPTION"] %>
+
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
+
+<link rel="shortcut icon" href="favicon.png"> 
+
 </head>
 <body>
 	<%= render 'layouts/header' %>

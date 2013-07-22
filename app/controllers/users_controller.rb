@@ -2,20 +2,25 @@ class UsersController < ApplicationController
 
   before_filter :signed_in_user, only: [:index, :edit, :update]
   before_filter :correct_user,   only: [:edit, :show, :update]
-  before_filter :admin_user,     only: [:index, :destroy]
+  before_filter :admin_user,     only: [:index, :show, :destroy]
 
   def index
     @users = User.all
+    @page_title = 'Users'
+
   end
 
   def show
 	 @user = User.find(params[:id])
+   @page_title = "Profile | "+@user.name
+
    @terms = @user.terms
    @favorites = @user.favorite_terms
   end
 
   def edit
     @user = User.find(params[:id])
+    @page_title = "Update Profile | " + @user.name
   end
 
   def update
@@ -32,6 +37,7 @@ class UsersController < ApplicationController
 
   def new
   	@user = User.new
+    @page_title = "Register"
   end
 
   def create
@@ -90,7 +96,7 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(terms_path) unless current_user?(@user)
+      redirect_to(terms_path) unless current_user?(@user) or current_user.admin?
     end
 
     def admin_user

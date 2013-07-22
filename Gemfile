@@ -17,6 +17,7 @@ gem 'rename'
 gem 'yaml_db'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'aws-ses', '~>0.5.0', :require => 'aws/ses'
+gem 'friendly_id' #, github: 'FriendlyId/friendly_id', branch: 'master'
 
 group :production do
 	gem 'mysql2'

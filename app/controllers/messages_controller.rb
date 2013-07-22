@@ -8,6 +8,8 @@ class MessagesController < ApplicationController
   def index
     @messages = Message.all
 
+    @page_title = 'Messages'
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @messages }
@@ -18,6 +20,7 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
+    @page_title = 'Contact Us'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -30,6 +33,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+
 
     respond_to do |format|
       if verify_recaptcha(model: @message) && @message.save

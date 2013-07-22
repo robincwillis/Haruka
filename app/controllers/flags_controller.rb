@@ -7,6 +7,8 @@ class FlagsController < ApplicationController
 		#@flaggable = find_flaggable
 		@flags = Flag.all #@flaggable.all
 		@terms = Term.all
+
+		@page_title = 'Flags'
 	end
 
 	def new

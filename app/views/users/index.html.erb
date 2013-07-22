@@ -1,9 +1,10 @@
-<% provide(:title, 'All users') %>
+
 <h1>All users</h1>
 
 <ul class="users">
   <% @users.each do |user| %>
     <li>
+      <p>
       <%= link_to user.name, user %>
       <% if current_user.admin? && !current_user?(user) %>
 
@@ -17,7 +18,7 @@
        <% end %>
 
        <% end %>
-      
+      </p>
     </li>
   <% end %>
 
