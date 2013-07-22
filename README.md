@@ -10,7 +10,7 @@ Using
 Rails 3.2.13
 ruby 1.9.3
 
-Installation
+Getting Started
 ------
 ```
 cd config
