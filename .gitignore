@@ -15,3 +15,7 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+/config/deploy.rb
+/config/deploy.haruka.rb
+/config/deploy.pinkjisho.rb
+.DS_Store

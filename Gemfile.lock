@@ -134,6 +134,8 @@ GEM
     recaptcha (0.3.5)
     rename (1.0.0)
       rails (>= 3.0.0)
+    rvm-capistrano (1.4.1)
+      capistrano (>= 2.0.0)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -186,6 +188,7 @@ DEPENDENCIES
   rails (= 3.2.13)
   recaptcha
   rename
+  rvm-capistrano
   sass-rails (~> 3.2.3)
   sqlite3
   thumbs_up

@@ -129,7 +129,7 @@ end
 
   def add_to_favorites
     @term = Term.find(params[:id])
-    @favorite = current_user.favorites.create(user_id: current_user.id, term_id: params[:id])
+    @favorite = current_user.favorites.create(user_id: current_user.id, term_id: @term.id)
 
     respond_to do |format|
       format.html { redirect_to @term, notice: 'Term added to Favorites.'}
@@ -139,7 +139,7 @@ end
 
   def remove_from_favorites
     @term = Term.find(params[:id])
-    Favorite.find_by_term_id(params[:id]).destroy
+    Favorite.find_by_term_id(@term.id).destroy
 
     respond_to do |format|
       format.html { redirect_to @term, notice: 'Term removed from Favorites.' }
