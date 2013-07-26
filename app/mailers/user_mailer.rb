@@ -1,5 +1,7 @@
 class UserMailer < ActionMailer::Base
-  default from: "password-reset@pinkji.sh"
+  #I like this way more actually
+  #default from: ["password-reset",ENV['DOMAIN']].join('@')
+  default from: "password-reset@#{ENV['DOMAIN']}"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
