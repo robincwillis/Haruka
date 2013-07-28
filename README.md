@@ -21,7 +21,7 @@ What Makes Haruka so Awesome?
 
 View Live
 ------
-[haruka.io](https://www.haruka.io)
+#[haruka.io](https://www.haruka.io)
 
 Getting Started
 ------
